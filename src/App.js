@@ -12,6 +12,30 @@ function App() {
 	document.title = "Text Utilities - Home"
   },[])
 
+  useEffect(() => {
+    if (mode === "dark") {
+      document.body.style.backgroundColor = "#00004d";
+      showAlert("Dark mode enabled", "success");
+    } else if (mode === "blue") {
+      document.body.style.backgroundColor = "#002080";
+      showAlert("Blue mode enabled", "success");
+    } else if (mode === "red") {
+      document.body.style.backgroundColor = "#b30000";
+      showAlert("Blue mode enabled", "success");
+    } else if (mode === "green") {
+      document.body.style.backgroundColor = "#33cc00";
+      showAlert("Blue mode enabled", "success");
+    } else if (mode === "light") {
+      document.body.style.backgroundColor = "#ffffff";
+      showAlert("Light mode enabled", "success");
+    }
+
+    setTimeout(()=>{
+      setMode("light");
+    },10000)
+
+  }, [mode])
+
   const showAlert = (msg, type) => {
     setAlert({
       msg: msg,
@@ -24,20 +48,11 @@ function App() {
   };
 
   const toggleMode = () => {
-    if (mode === "light") {
-      setMode("dark");
-      document.body.style.backgroundColor = "#00004d";
-      showAlert("Dark mode enabled", "success");
-    } else {
-      setMode("light");
-      document.body.style.backgroundColor = "white";
-      showAlert("Light mode enabled", "success");
-    }
   };
 
   return (
     <>
-      <NavBar text="Navbar" toggle={toggleMode} mode={mode} />
+      <NavBar text="Navbar" toggle={toggleMode} mode={mode} setMode={setMode}/>
       <Alert alert={alert} />
       <TextForm mode={mode} alertHandle={showAlert} />
     </>

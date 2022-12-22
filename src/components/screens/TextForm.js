@@ -41,6 +41,11 @@ export default function TextForm(props) {
     setText(temp.join(" "));
   };
 
+  const copyText = ()=> {
+    navigator.clipboard.writeText(text);
+    props.alertHandle("Successfully copied", "success");
+  }
+
   return (
     <div>
       <div
@@ -83,8 +88,16 @@ export default function TextForm(props) {
           Convert To CamelCase
         </button>
 
+        <button
+          type="button"
+          className="btn btn-primary my-3 mx-2"
+          onClick={copyText}
+        >
+          Copy text
+        </button>
+
         <div className="mb-3">
-          Total {text.split(" ").length} words and {text.length} alphabets
+          Total {text.split(/\s+/).filter((element)=>{return element.length > 0}).length} words and {text.length} alphabets
         </div>
 
         <h2 htmlFor="previewText">Preview</h2>

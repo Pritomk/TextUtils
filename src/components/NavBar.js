@@ -2,7 +2,9 @@ import React from "react";
 
 export default function NavBar(props) {
   return (
-    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
+    <nav
+      className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}
+    >
       <a className="navbar-brand" href="/">
         {props.text}
       </a>
@@ -61,16 +63,12 @@ export default function NavBar(props) {
             </a>
           </li>
         </ul>
-        <div class="form-check form-switch form-check-reverse">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="flexSwitchCheckReverse"
-            onClick={props.toggle}
-          />
-          <label class="form-check-label" for="flexSwitchCheckReverse">
-            Darkmode
-          </label>
+        <div>
+          <button type="button" className="btn btn-primary mx-2" style={{height:"2rem", width:"2rem"}} onClick={()=>props.setMode("blue")}></button>
+          <button type="button" className="btn btn-success mx-2" style={{height:"2rem", width:"2rem"}} onClick={()=>props.setMode("green")}></button>
+          <button type="button" className="btn btn-danger mx-2" style={{height:"2rem", width:"2rem"}} onClick={()=>props.setMode("red")}></button>
+
+          <button type="button" className="btn btn-dark mx-4" style={{height:"2rem", width:"2rem"}} onClick={()=>props.setMode("dark")}></button>
         </div>
       </div>
     </nav>
